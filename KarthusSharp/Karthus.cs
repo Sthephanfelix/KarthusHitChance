@@ -436,7 +436,7 @@ namespace KarthusSharp
             _spellQ.Width = GetDynamicQWidth(target);
             
        // Old q casting  _spellQ.Cast(target);
-            _spellQ.CastIfHitchanceEquals(target, HitChance.VeryHigh);
+            _spellQ.CastIfHitchanceEquals(target, >= HitChance.High);
         }
 
         private void CastQ(Vector2 pos, int minManaPercent = 0)
