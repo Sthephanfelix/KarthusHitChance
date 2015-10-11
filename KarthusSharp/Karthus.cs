@@ -427,15 +427,16 @@ namespace KarthusSharp
             _comboE = false;
         }
 
-        private void CastQ(Obj_AI_Base target, int minManaPercent = 0)
+        void CastQ(Obj_AI_Base target, int minManaPercent = 0)
         {
             if (!_spellQ.IsReady() || !(GetManaPercent() >= minManaPercent))
                 return;
             if (target == null)
                 return;
             _spellQ.Width = GetDynamicQWidth(target);
+            
+       // Old q casting  _spellQ.Cast(target);
             _spellQ.CastIfHitchanceEquals(target, HitChance.VeryHigh);
-
         }
 
         private void CastQ(Vector2 pos, int minManaPercent = 0)
