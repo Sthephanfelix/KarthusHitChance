@@ -40,8 +40,8 @@ namespace KarthusSharp
         private readonly Spell _spellE;
         private readonly Spell _spellR;
 
-        private const float SpellQWidth = 160f;
-        private const float SpellWWidth = 160f;
+        private const float SpellQWidth = 150f;
+        private const float SpellWWidth = 140f;
 
         private bool _comboE;
         private static Vector2 PingLocation;
@@ -434,7 +434,7 @@ namespace KarthusSharp
             if (target == null)
                 return;
             _spellQ.Width = GetDynamicQWidth(target);
-            _spellQ.Cast(target);
+            _spellQ.CastIfHitchanceEquals(target, HitChance.VeryHigh);
 
         }
 
