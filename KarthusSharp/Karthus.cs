@@ -282,7 +282,7 @@ namespace KarthusSharp
         {
             if (!_spellR.IsReady())
                 return;
-            var time = Utils.TickCount;
+            var time = Environment.TickCount;
 
             List<Obj_AI_Hero> ultTargets = new List<Obj_AI_Hero>();
 
@@ -346,7 +346,9 @@ namespace KarthusSharp
             if (target == null)
                 return;
             _spellQ.Width = GetDynamicQWidth(target);
-            _spellQ.Cast(target);
+            
+       // Old q casting  _spellQ.Cast(target);
+            _spellQ.CastIfHitchanceEquals(target, HitChance.VeryHigh);
         }
 
         void CastQ(Vector2 pos, int minManaPercent = 0)
@@ -396,7 +398,7 @@ namespace KarthusSharp
             {
                 var victims = "";
 
-                var time = Utils.TickCount;
+                var time = Environment.TickCount;
 
                 foreach (EnemyInfo target in Program.Helper.EnemyInfo.Where(x =>
                     x.Player.IsValid &&
@@ -408,13 +410,13 @@ namespace KarthusSharp
                     victims += target.Player.ChampionName + " ";
 
                     /*if (!_menu.Item("notifyPing").GetValue<bool>() ||
-                        (target.LastPinged != 0 && Utils.TickCount - target.LastPinged <= 11000))
+                        (target.LastPinged != 0 && Environment.TickCount - target.LastPinged <= 11000))
                         continue;
                     if (!(ObjectManager.Player.Distance(target.Player) > 1800) ||
                         (!target.Player.IsVisible && time - target.LastSeen <= 2750))
                         continue;
                     Program.Helper.Ping(target.Player.Position);
-                    target.LastPinged = Utils.TickCount;*/
+                    target.LastPinged = Environment.TickCount;*/
                 }
 
                 if (victims != "" && _menu.Item("notifyR").GetValue<bool>())
